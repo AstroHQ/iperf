@@ -382,9 +382,14 @@ cleanup_server(struct iperf_test *test)
     }
 }
 
-
 int
 iperf_run_server(struct iperf_test *test)
+{
+    return iperf_run_stoppable_server(test, NULL);
+}
+
+int
+iperf_run_stoppable_server(struct iperf_test *test, int *stop)
 {
     int result, s;
     int send_streams_accepted, rec_streams_accepted;
