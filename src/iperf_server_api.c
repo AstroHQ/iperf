@@ -433,7 +433,7 @@ iperf_run_stoppable_server(struct iperf_test *test, int *stop)
     send_streams_accepted = 0;
     rec_streams_accepted = 0;
 
-    while (test->state != IPERF_DONE) {
+    while (test->state != IPERF_DONE && (!stop || !*stop)) {
 
         memcpy(&read_set, &test->read_set, sizeof(fd_set));
         memcpy(&write_set, &test->write_set, sizeof(fd_set));
